@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { GenCodeComponent } from './gen-code.component';
 import { RouterModule } from '@angular/router';
 import { CommonFormModule } from 'app/shared/common-form/common-form.module';
-// import { QRCodeModule } from 'angularx-qrcode';
-import { QRCodeComponent } from 'angularx-qrcode';
+import { QRCodeModule } from 'angularx-qrcode';
 import { CustomDialogModule } from 'app/shared/components/custom-dialog/custom-dialog.module';
 
 @NgModule({
@@ -14,8 +13,8 @@ import { CustomDialogModule } from 'app/shared/components/custom-dialog/custom-d
   imports: [
     CommonModule,
     CommonFormModule,
-    QRCodeComponent,
     CustomDialogModule,
+    QRCodeModule,
     RouterModule.forChild([
       {
         path: '',
