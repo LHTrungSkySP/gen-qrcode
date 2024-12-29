@@ -1,0 +1,73 @@
+<div class="grid p-5 m-0">
+    <div class="col-4">
+        <textarea pInputTextarea [autoResize]="true" class="w-full h-30rem" [(ngModel)]="code"
+            (keydown.enter)="genCode()"></textarea>
+    </div>
+    <div class="col-2 flex flex-column gap-3">
+        <button (click)="showAll()" pButton class="">
+            show all
+        </button>
+        <button (click)="hideAll()" pButton class="">
+            hide all
+        </button>
+        <button pButton class="" (click)="showPrint()">
+            Show print
+        </button>
+        <div class="border-1 p-2">
+            <label for="">thứ tự bắt đầu</label>
+            <p-inputNumber inputId="integeronly" class="w-full" [styleClass]="'w-full'" [(ngModel)]="numberStarGen" />
+            <label for="">thứ tự kết thúc</label>
+            <p-inputNumber inputId="integeronly" class="w-full" [styleClass]="'w-full'" [(ngModel)]="numberEndGen" />
+            <label for="">Nội dung</label>
+            <input pInputText [(ngModel)]="dataNeedAutoGen" class="w-full" >
+            <button pButton class="" (click)="genAuto()">
+                Gen
+            </button>
+        </div>
+        <div class="border-1 p-2">
+            ecs: thoát màn hình xem trước in<br>
+            enter: show toàn bộ khi xem trước khi in<br>
+            click vào 1 mã code: arn để quét<br>
+        </div>
+    </div>
+    <div *ngIf="!showPrintScreen" class="col-6 bg-white grid m-0">
+        @for(data of listDataNeedGen; track data){
+        <div (click)="focusOnCode(data)" class="flex col-6 relative">
+            <qrcode [qrdata]="data.data" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+            <h4>{{data.data}}</h4>
+            <div *ngIf="!data.isFocus" class="absolute h-full w-full bg-black-alpha-90"></div>
+        </div>
+        }
+        <div *ngIf="this.listDataNeedGen.length % 2 !== 0" class="flex col-6 relative">
+            <div class="absolute h-full w-full bg-black-alpha-90"></div>
+        </div>
+    </div>
+    <div *ngIf="showPrintScreen" class="absolute top-0 bottom-0 left-0 right-0 bg-white grid m-0 z-1">
+        <div class="w-full">This is Trung's tool</div>
+        @for(data of listDataNeedGen; track data){
+            <div (click)="focusOnCode(data)" class="flex col-6 relative">
+                <qrcode [qrdata]="data.data" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+                <h4>{{data.data}}</h4>
+                <div *ngIf="!data.isFocus" class="absolute h-full w-full bg-black-alpha-90"></div>
+            </div>
+            }
+            <div *ngIf="this.listDataNeedGen.length % 2 !== 0" class="flex col-6 relative">
+                <div class="absolute h-full w-full "></div>
+            </div>
+    </div>
+</div>
+<!-- <lht-custom-dialog [contentTemp]="contentTemp" [(isVisible)]="showPrintScreen"
+[modal]="false"
+    [style]="{width: '100%', height: '100%', 'max-height': '100%', margin: '0'}">
+    <ng-template #contentTemp>
+        <button (click)="showPrintScreen = false" pButton>X</button>
+        <div class="bg-white grid m-0">
+            @for(data of listDataNeedGen; track data){
+            <div class="flex col-6">
+                <qrcode [qrdata]="data" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+                <h4>{{data}}</h4>
+            </div>
+            }
+        </div>
+    </ng-template>
+</lht-custom-dialog> -->

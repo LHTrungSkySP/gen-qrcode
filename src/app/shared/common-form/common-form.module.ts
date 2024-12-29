@@ -9,7 +9,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [],
@@ -24,7 +24,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     MultiSelectModule,
     RadioButtonModule,
     CalendarModule,
-    InputTextareaModule
+    InputTextareaModule,
+    InputNumberModule
   ],
   exports: [
     FormsModule,
@@ -37,6 +38,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     RadioButtonModule,
     CalendarModule,
     InputTextareaModule,
+    InputNumberModule
   ]
 })
 export class CommonFormModule { }
