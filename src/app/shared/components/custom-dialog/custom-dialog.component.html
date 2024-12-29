@@ -1,0 +1,10 @@
+<p-dialog
+        [showHeader]="false"
+        [modal]="modal"
+        [(visible)]="isVisible"
+        [dismissableMask]="true"
+        [position]="'top'"
+        styleClass="dialog-custom mt-2rem custom-timer-dialog"
+        [style]="style">
+    <ng-container *ngTemplateOutlet="contentTemp"></ng-container>
+</p-dialog>
